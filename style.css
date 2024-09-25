@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    min-height: 100vh;
+    overflow-x: hidden; 
+}
+
+.container {
+    max-width: 1000px;
+    width: 100%;
+    background-color: white;
+    padding: 20px;
+    margin: 50px auto;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: visible;
+}
+
+h1, h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.generator, .scanner {
+    margin-bottom: 30px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    border-radius: 5px;
+    transition: border-bottom 0.3s ease;
+    font-size: 16px;
+}
+
+input[type="text"]:focus {
+    border-bottom: 2px solid #007bff;
+    outline: none;
+}
+
+.qr-customization {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.customization-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input[type="color"], select, button {
+    padding: 10px;
+    background: #fff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+    font-size: 16px;
+}
+
+input[type="color"]:focus, select:focus, button:focus {
+    outline: none;
+    box-shadow: 0px 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+.color-picker {
+    width: 50px;
+    height: 50px;
+    padding: 0;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#qrCode {
+    text-align: center;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+#preview {
+    width: 100%;
+    max-height: 400px;
+    border-radius: 10px;
+    display: none;
+}
+
+#scannedResult {
+    margin-top: 20px;
+}
+
+input[type="file"] {
+    margin: 20px 0;
+    border: none;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+label {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+#qrCustomText {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+video {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Styles for icon-only button */
+.icon-btn {
+    border: none;
+    background-color: transparent;
+    font-size: 24px;
+    color: #007bff;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    margin-top: 15px;
+}
+
+.icon-btn:hover {
+    color: #f6f6f6;
+}
