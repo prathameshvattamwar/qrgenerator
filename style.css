@@ -1,159 +1,396 @@
+/* --- Global Reset & Font --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    background-color: #f4f4f4;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f2f5; /* Lighter grey background */
     color: #333;
     display: flex;
     justify-content: center;
-    align-items: flex-start; 
+    align-items: flex-start; /* Align container to the top */
     min-height: 100vh;
-    overflow-x: hidden; 
+    padding: 20px; /* Add padding for smaller screens */
+    overflow-x: hidden;
 }
 
+/* --- Container --- */
 .container {
-    max-width: 1000px;
+    max-width: 900px; /* Slightly wider */
     width: 100%;
-    background-color: white;
-    padding: 20px;
-    margin: 50px auto;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    padding: 30px 40px; /* Increased padding */
+    margin: 30px 0; /* Adjusted margin */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Softer shadow */
+    border-radius: 12px; /* More rounded corners */
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Space between sections */
+}
+
+/* --- Card Styling (for sections) --- */
+.card {
+    border: 1px solid #e0e0e0;
     border-radius: 10px;
-    overflow: visible;
+    padding: 25px;
+    padding-top: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-h1, h2 {
+/* --- Headings --- */
+h1 {
     text-align: center;
-    margin-bottom: 20px;
+    /* margin-bottom: 10px;  */
+    color: #1a2a4d; 
+    font-weight: 600;
 }
 
-.generator, .scanner {
-    margin-bottom: 30px;
+h2 {
+    text-align: center;
+    margin-bottom: 25px; /* Spacing below section titles */
+    color: #0056b3; /* Primary blue */
+    font-weight: 500;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
 }
 
-input[type="text"] {
+h3 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: #555;
+    font-weight: 500;
+    font-size: 1.1em;
+}
+
+
+/* --- Input Fields & Selects --- */
+label {
+    display: block; /* Ensure labels are block elements */
+    margin-bottom: 6px;
+    font-size: 0.95em;
+    font-weight: 500;
+    color: #444;
+    cursor: pointer; /* Indicate label is clickable */
+}
+
+input[type="text"],
+input[type="file"],
+select {
     width: 100%;
-    padding: 15px;
-    margin-bottom: 20px;
-    border: none;
-    border-bottom: 2px solid #ccc;
-    border-radius: 5px;
-    transition: border-bottom 0.3s ease;
-    font-size: 16px;
+    padding: 12px 15px;
+    margin-bottom: 15px; /* Consistent spacing */
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fdfdfd;
 }
 
-input[type="text"]:focus {
-    border-bottom: 2px solid #007bff;
+input[type="text"]:focus,
+select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
     outline: none;
 }
 
-.qr-customization {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+/* Specific input group styles */
+.input-group label {
+    font-weight: 600; /* Make main input label slightly bolder */
 }
 
-.customization-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: space-between;
-    align-items: center;
+/* File input custom styling trigger */
+.file-input-group label {
+    margin-bottom: 6px;
 }
-
-input[type="color"], select, button {
-    padding: 10px;
-    background: #fff;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+input[type="file"] {
+    padding: 8px; /* Adjust padding for file input */
+    font-size: 0.9em;
+    background-color: #f9f9f9;
     cursor: pointer;
-    transition: box-shadow 0.3s ease;
-    font-size: 16px;
 }
 
-input[type="color"]:focus, select:focus, button:focus {
-    outline: none;
-    box-shadow: 0px 4px 10px rgba(0, 123, 255, 0.3);
+input::placeholder {
+    color: #999;
 }
 
+/* --- Customization Section --- */
+.qr-customization {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Spacing between grid items */
+    margin-bottom: 25px;
+    align-items: end; /* Align items to the bottom of the grid cell */
+}
+
+.customization-group {
+    display: flex;
+    flex-direction: column; /* Stack label and input vertically */
+}
+
+/* Full width for specific groups if needed on larger screens */
+.customization-group.file-input-group,
+.customization-group.text-input-group {
+   /* grid-column: span 2; */ /* Uncomment if you want logo/text inputs to span two columns */
+}
+
+
+/* Color Picker */
 .color-picker {
-    width: 50px;
-    height: 50px;
+    width: 45px; /* Smaller size */
+    height: 45px;
     padding: 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    cursor: pointer;
+    vertical-align: middle; /* Align better with label if inline */
+    margin-top: 5px; /* Add space if label is above */
 }
 
-button {
+/* --- Buttons --- */
+.btn {
+    padding: 12px 20px;
+    font-size: 1em;
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.1s ease;
+    display: inline-flex; /* Use flex for icon alignment */
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Space between icon and text */
+    text-decoration: none; /* For label acting as button */
+    color: white;
+}
+
+.btn i {
+    font-size: 1.1em; /* Slightly larger icon */
+}
+
+.btn-primary {
     background-color: #007bff;
     color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 45px;
-    height: 45px;
-    transition: background-color 0.3s ease;
 }
 
-button:hover {
+.btn-primary:hover {
     background-color: #0056b3;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary:active {
+     background-color: #004ca0;
+     transform: translateY(1px); /* Add subtle press effect */
+}
+
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary:active {
+     background-color: #545b62;
+     transform: translateY(1px);
+}
+
+.btn-download {
+    width: 100%; /* Make download button full width */
+    margin-top: 20px;
+}
+
+.btn-upload {
+    /* Style label like a button */
+    display: inline-flex;
+    text-align: center;
+}
+
+/* --- QR Code Display --- */
+.qr-code-container {
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px dashed #ccc;
+    border-radius: 8px;
+    min-height: 150px; /* Minimum height before QR generated */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9f9f9; /* Slight background tint */
 }
 
 #qrCode {
-    text-align: center;
-    margin-top: 20px;
-    overflow: hidden;
+    /* Styles for the div containing the QR code canvas/img */
+    line-height: 0; /* Prevent extra space below canvas/img */
+     margin-bottom: 10px; /* Space between QR and text */
+}
+
+#qrCode canvas,
+#qrCode img {
+    max-width: 100%; /* Ensure QR code scales down if needed */
+    height: auto;   /* Maintain aspect ratio */
+    border-radius: 5px; /* Slight rounding if desired */
+}
+
+.placeholder-text {
+    color: #888;
+    font-style: italic;
+}
+
+.qr-text-display {
+    margin-top: 10px;
+    font-size: 1em;
+    font-weight: 500;
+    color: #333;
+    word-wrap: break-word; /* Wrap long custom text */
+}
+
+/* --- Scanner Section --- */
+.scanner-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.or-divider {
+    font-weight: 500;
+    color: #777;
 }
 
 #preview {
+    display: none; /* Hidden by default */
     width: 100%;
-    max-height: 400px;
-    border-radius: 10px;
-    display: none;
-}
-
-#scannedResult {
-    margin-top: 20px;
-}
-
-input[type="file"] {
-    margin: 20px 0;
-    border: none;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    padding: 10px;
-}
-
-label {
-    font-size: 16px;
-    margin-top: 10px;
-}
-
-#qrCustomText {
-    text-align: center;
-    font-size: 18px;
-    margin-top: 10px;
-}
-
-video {
-    max-width: 100%;
+    max-width: 400px; /* Limit video preview size */
     height: auto;
+    border-radius: 8px;
+    margin: 20px auto; /* Center video */
+    border: 1px solid #ddd;
+    background-color: #000; /* Black background while loading */
 }
 
-/* Styles for icon-only button */
-.icon-btn {
-    border: none;
-    background-color: transparent;
-    font-size: 24px;
-    color: #007bff;
-    cursor: pointer;
-    transition: color 0.3s ease;
-    margin-top: 15px;
+.scan-result {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    background-color: #f8f9fa;
+    text-align: center;
+    word-wrap: break-word; /* Wrap long URLs */
 }
 
-.icon-btn:hover {
-    color: #f6f6f6;
+#scannedResult strong {
+    color: #0056b3;
+}
+
+#resultURL {
+    font-family: 'Courier New', Courier, monospace; /* Monospace for URLs */
+    color: #333;
+}
+
+/* --- Responsive Design --- */
+
+/* Tablets and Larger Phones */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        margin: 20px 0;
+        gap: 30px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    h2 {
+        font-size: 1.4em;
+        margin-bottom: 20px;
+    }
+
+    .qr-customization {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust grid for smaller screens */
+        gap: 15px;
+    }
+
+    .btn {
+        padding: 10px 15px;
+        font-size: 0.95em;
+    }
+
+     .scanner-controls {
+        flex-direction: column; /* Stack scanner buttons vertically */
+        align-items: stretch; /* Make buttons full width */
+        gap: 10px;
+    }
+
+    .or-divider {
+        margin: 5px 0;
+    }
+
+    #preview {
+         max-width: 100%;
+    }
+}
+
+/* Smaller Phones */
+@media (max-width: 480px) {
+    body {
+        padding: 10px; /* Reduce body padding */
+    }
+
+    .container {
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    h2 {
+        font-size: 1.2em;
+        margin-bottom: 15px;
+    }
+
+    input[type="text"],
+    select,
+    input[type="file"],
+    .btn {
+        font-size: 0.9em; /* Slightly smaller text */
+        padding: 10px 12px;
+    }
+
+     .qr-customization {
+        grid-template-columns: 1fr; /* Stack all customization options in a single column */
+        gap: 15px;
+    }
+
+     /* Ensure labels are still readable */
+    label {
+        font-size: 0.9em;
+    }
+
+     .qr-code-container {
+         padding: 10px;
+     }
+
+    .scan-result {
+        padding: 10px;
+        font-size: 0.9em;
+    }
 }
